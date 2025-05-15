@@ -9,5 +9,5 @@
 
 ## Useful Links
 
-* [Discord](https://discord.gg/Z6F4uU8Ewr) - Talk in current progress
+* [Discord](https://discord.gg/Z6F4uU8Ewr) - Talk about current progress
 * [Github](https://github.com/Web-Design-Development-Society/lineuponline)
