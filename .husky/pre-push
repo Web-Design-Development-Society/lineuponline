@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "Started Husky pre-push checks!"
+
+npm run format
+npm run lint:fix
