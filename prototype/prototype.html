@@ -1,428 +1,667 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BYUI Study Helper Preview</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom font for a clean look */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Hide pages by default, JavaScript will show the active one */
-        .page-content {
-            display: none;
-        }
-        .page-content.active {
-            display: flex; /* Use flex for consistent layout within pages */
-            flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            justify-content: center; /* Center content vertically */
-            min-height: calc(100vh - 160px); /* Adjust based on header/footer height */
-        }
-        /* Specific adjustments for workload scheduler to allow form stretching */
-        #workload-scheduler-page.active {
-            align-items: flex-start; /* Align form to start */
-            padding-top: 2rem; /* Add some top top padding */
-        }
-        #workload-scheduler-page .form-container {
-            width: 100%;
-            max-width: 600px; /* Limit form width */
-        }
+      /* Custom font for a clean look */
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Hide pages by default, JavaScript will show the active one */
+      .page-content {
+        display: none;
+      }
+      .page-content.active {
+        display: flex; /* Use flex for consistent layout within pages */
+        flex-direction: column;
+        align-items: center; /* Center content horizontally */
+        justify-content: center; /* Center content vertically */
+        min-height: calc(100vh - 160px); /* Adjust based on header/footer height */
+      }
+      /* Specific adjustments for workload scheduler to allow form stretching */
+      #workload-scheduler-page.active {
+        align-items: flex-start; /* Align form to start */
+        padding-top: 2rem; /* Add some top top padding */
+      }
+      #workload-scheduler-page .form-container {
+        width: 100%;
+        max-width: 600px; /* Limit form width */
+      }
     </style>
-</head>
-<body class="bg-gray-100 text-gray-800 p-4 sm:p-6 md:p-8 flex flex-col min-h-screen">
+  </head>
+  <body class="bg-gray-100 text-gray-800 p-4 sm:p-6 md:p-8 flex flex-col min-h-screen">
     <header class="bg-blue-600 text-white p-6 rounded-lg shadow-md mb-8 text-center">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2">BYUI Study Helper</h1>
-        <p class="text-lg sm:text-xl">Your companion for effective learning.</p>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-2">BYUI Study Helper</h1>
+      <p class="text-lg sm:text-xl">Your companion for effective learning.</p>
     </header>
 
-    <nav class="mb-8 bg-white p-4 rounded-lg shadow-md flex justify-center flex-wrap gap-4">
-        <button class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-page="home-page">Home</button>
-        <button class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-page="pomodoro-page">Pomodoro Timer</button>
-        <button class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-page="workload-scheduler-page">Flex Schedule Calculator</button>
-        <button class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-page="weekly-review-page">Weekly Review</button>
+    <nav
+      class="mb-8 bg-white p-4 rounded-lg shadow-md flex justify-center flex-wrap gap-4"
+    >
+      <button
+        class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+        data-page="home-page"
+      >
+        Home
+      </button>
+      <button
+        class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+        data-page="pomodoro-page"
+      >
+        Pomodoro Timer
+      </button>
+      <button
+        class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+        data-page="workload-scheduler-page"
+      >
+        Flex Schedule Calculator
+      </button>
+      <button
+        class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+        data-page="weekly-review-page"
+      >
+        Weekly Review
+      </button>
     </nav>
 
     <main class="flex-grow max-w-7xl mx-auto w-full">
-
-        <section id="home-page" class="page-content active bg-white p-8 rounded-lg shadow-md text-center">
-            <h2 class="text-3xl font-bold text-blue-700 mb-4">Welcome to BYUI Study Helper!</h2>
-            <p class="text-lg text-gray-700 mb-4">
-                This website is designed to assist BYU-Idaho students in managing their studies effectively and avoiding burnout.
-                Explore our tools to optimize your learning experience.
+      <section
+        id="home-page"
+        class="page-content active bg-white p-8 rounded-lg shadow-md text-center"
+      >
+        <h2 class="text-3xl font-bold text-blue-700 mb-4">
+          Welcome to BYUI Study Helper!
+        </h2>
+        <p class="text-lg text-gray-700 mb-4">
+          This website is designed to assist BYU-Idaho students in managing their studies
+          effectively and avoiding burnout. Explore our tools to optimize your learning
+          experience.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <div class="p-6 bg-blue-50 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">Pomodoro Timer</h3>
+            <p class="text-gray-600">
+              Boost focus with structured study and break intervals.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <div class="p-6 bg-blue-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">Pomodoro Timer</h3>
-                    <p class="text-gray-600">Boost focus with structured study and break intervals.</p>
-                </div>
-                <div class="p-6 bg-green-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold text-green-800 mb-2">Flex Schedule Calculator</h3>
-                    <p class="text-gray-600">Understand your capacity and create a balanced study plan.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Weekly Review</h3>
-                    <p class="text-gray-600">Master material with intelligent spaced repetition.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="pomodoro-page" class="page-content bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Pomodoro Timer</h2>
-            <div class="flex flex-wrap justify-center gap-3 mb-6">
-                <button id="pomodoro-25-5" class="pomodoro-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-minutes="25">25:5 Cycle</button>
-                <button id="pomodoro-45-15" class="pomodoro-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-minutes="45">45:15 Cycle</button>
-            </div>
-            <div class="text-5xl sm:text-6xl font-mono text-gray-900 mb-6">
-                <span id="minutes">25</span>:<span id="seconds">00</span>
-            </div>
-            <div class="flex flex-wrap justify-center gap-3">
-                <button id="start-pause" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">Start</button>
-                <button id="reset" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">Reset</button>
-            </div>
-            <p class="text-sm text-gray-500 mt-4 text-center">*(Basic timer functionality implemented for demonstration)*</p>
-        </section>
-
-        <section id="workload-scheduler-page" class="page-content bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Flex Schedule Calculator</h2>
-            <p class="text-gray-600 mb-6 text-center">
-                The Flex Schedule helps you understand your maximum and minimum recommended study times each day,
-                based on your unique situation, to help you stay productive without burning out.
+          </div>
+          <div class="p-6 bg-green-50 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-green-800 mb-2">
+              Flex Schedule Calculator
+            </h3>
+            <p class="text-gray-600">
+              Understand your capacity and create a balanced study plan.
             </p>
-            <div class="form-container w-full max-w-2xl mx-auto">
-                <form id="flex-schedule-form" class="space-y-4">
-                    <div>
-                        <label for="credit-hours" class="block text-sm font-medium text-gray-700 mb-1">Number of Credit Hours:</label>
-                        <input type="number" id="credit-hours" placeholder="e.g., 12, 15" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-                    
-                    <div class="pt-4 border-t border-gray-200">
-                        <label for="soft-skill-avg" class="block text-sm font-medium text-gray-700 mb-1">
-                            Average Soft Skills Score (from BYUI Self-Assessment - out of 80 in each section):
-                        </label>
-                        <input type="number" id="soft-skill-avg" placeholder="Enter your average soft skills score" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                        <a href="https://careerprep.byui.edu/" target="_blank" class="text-blue-500 hover:text-blue-700 text-sm mt-1 inline-block">Link to Self-Assessment</a>
-                    </div>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Weekly Review</h3>
+            <p class="text-gray-600">
+              Master material with intelligent spaced repetition.
+            </p>
+          </div>
+        </div>
+      </section>
 
-                    <div class="pt-4 border-t border-gray-200">
-                        <label for="hard-skill-avg" class="block text-sm font-medium text-gray-700 mb-1">
-                            Average Hard Skills Score (from BYUI Self-Assessment - out of 80 in each section):
-                        </label>
-                        <input type="number" id="hard-skill-avg" placeholder="Enter your average hard skills score" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                        <a href="https://careerprep.byui.edu/" target="_blank" class="text-blue-500 hover:text-blue-700 text-sm mt-1 inline-block">Link to Self-Assessment</a>
-                    </div>
+      <section id="pomodoro-page" class="page-content bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-blue-700 mb-4">Pomodoro Timer</h2>
+        <div class="flex flex-wrap justify-center gap-3 mb-6">
+          <button
+            id="pomodoro-25-5"
+            class="pomodoro-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+            data-minutes="25"
+          >
+            25:5 Cycle
+          </button>
+          <button
+            id="pomodoro-45-15"
+            class="pomodoro-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+            data-minutes="45"
+          >
+            45:15 Cycle
+          </button>
+        </div>
+        <div class="text-5xl sm:text-6xl font-mono text-gray-900 mb-6">
+          <span id="minutes">25</span>:<span id="seconds">00</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button
+            id="start-pause"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Start
+          </button>
+          <button
+            id="reset"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Reset
+          </button>
+        </div>
+        <p class="text-sm text-gray-500 mt-4 text-center">
+          *(Basic timer functionality implemented for demonstration)*
+        </p>
+      </section>
 
-                    <div class="pt-4 border-t border-gray-200">
-                        <label for="mastering-self-management" class="block text-sm font-medium text-gray-700 mb-1">
-                            Mastering Self Management Score (from BYUI Self-Assessment - out of 80 in each section):
-                        </label>
-                        <input type="number" id="mastering-self-management" placeholder="Enter your mastering self management score" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                        <a href="https://careerprep.byui.edu/" target="_blank" class="text-blue-500 hover:text-blue-700 text-sm mt-1 inline-block">Link to Self-Assessment</a>
-                    </div>
-
-                    <div>
-                        <label for="outside-commitments" class="block text-sm font-medium text-gray-700 mb-1">Outside Commitments (hours/week):</label>
-                        <input type="number" id="outside-commitments" placeholder="e.g., 10" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-                    
-                    <div class="pt-4 border-t border-gray-200">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Available Study Time (Min/Max hours per day):</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <div class="flex flex-col">
-                                <label for="mon-min" class="text-sm font-medium text-gray-700 mb-1">Monday:</label>
-                                <div class="flex gap-2">
-                                    <input type="number" id="mon-min" placeholder="Min" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                    <input type="number" id="mon-max" placeholder="Max" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                </div>
-                            </div>
-                            <div class="flex flex-col">
-                                <label for="tue-min" class="text-sm font-medium text-gray-700 mb-1">Tuesday:</label>
-                                <div class="flex gap-2">
-                                    <input type="number" id="tue-min" placeholder="Min" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                    <input type="number" id="tue-max" placeholder="Max" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                </div>
-                            </div>
-                            <div class="flex flex-col">
-                                <label for="wed-min" class="text-sm font-medium text-gray-700 mb-1">Wednesday:</label>
-                                <div class="flex gap-2">
-                                    <input type="number" id="wed-min" placeholder="Min" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                    <input type="number" id="wed-max" placeholder="Max" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                </div>
-                            </div>
-                            <div class="flex flex-col">
-                                <label for="thu-min" class="text-sm font-medium text-gray-700 mb-1">Thursday:</label>
-                                <div class="flex gap-2">
-                                    <input type="number" id="thu-min" placeholder="Min" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                    <input type="number" id="thu-max" placeholder="Max" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                </div>
-                            </div>
-                            <div class="flex flex-col">
-                                <label for="fri-min" class="text-sm font-medium text-gray-700 mb-1">Friday:</label>
-                                <div class="flex gap-2">
-                                    <input type="number" id="fri-min" placeholder="Min" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                    <input type="number" id="fri-max" placeholder="Max" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                </div>
-                            </div>
-                            <div class="flex flex-col">
-                                <label for="sat-min" class="text-sm font-medium text-gray-700 mb-1">Saturday:</label>
-                                <div class="flex gap-2">
-                                    <input type="number" id="sat-min" placeholder="Min" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                    <input type="number" id="sat-max" placeholder="Max" class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                </div>
-                            </div>
-                            </div>
-                    </div>
-
-                    <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition duration-300 ease-in-out transform hover:scale-105">Calculate Flex Schedule</button>
-                </form>
-                <div id="schedule-output" class="schedule-output mt-6 p-4 bg-gray-50 rounded-md border border-gray-200">
-                    <h3 class="text-xl font-semibold text-green-700 mb-2">Your Recommended Flex Schedule:</h3>
-                    <p class="text-gray-600">*(Enter your details and click "Calculate Flex Schedule" to see a recommendation.)*</p>
-                </div>
+      <section
+        id="workload-scheduler-page"
+        class="page-content bg-white p-6 rounded-lg shadow-md"
+      >
+        <h2 class="text-2xl font-semibold text-blue-700 mb-4">
+          Flex Schedule Calculator
+        </h2>
+        <p class="text-gray-600 mb-6 text-center">
+          The Flex Schedule helps you understand your maximum and minimum recommended
+          study times each day, based on your unique situation, to help you stay
+          productive without burning out.
+        </p>
+        <div class="form-container w-full max-w-2xl mx-auto">
+          <form id="flex-schedule-form" class="space-y-4">
+            <div>
+              <label
+                for="credit-hours"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Number of Credit Hours:</label
+              >
+              <input
+                type="number"
+                id="credit-hours"
+                placeholder="e.g., 12, 15"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
             </div>
-        </section>
 
-        <section id="weekly-review-page" class="page-content bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Weekly Review</h2>
-            <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
-                <label for="file-upload" class="cursor-pointer bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                    Upload Files
-                </label>
-                <input type="file" id="file-upload" multiple class="hidden">
-                <p id="file-list" class="text-gray-600">*(Uploaded files will be listed here - actual file handling would require backend and more complex frontend)*</p>
+            <div class="pt-4 border-t border-gray-200">
+              <label
+                for="soft-skill-avg"
+                class="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Average Soft Skills Score (from BYUI Self-Assessment - out of 80 in each
+                section):
+              </label>
+              <input
+                type="number"
+                id="soft-skill-avg"
+                placeholder="Enter your average soft skills score"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <a
+                href="https://careerprep.byui.edu/"
+                target="_blank"
+                class="text-blue-500 hover:text-blue-700 text-sm mt-1 inline-block"
+                >Link to Self-Assessment</a
+              >
             </div>
-            <div class="review-interface grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-                <div class="p-4 bg-gray-50 rounded-md border border-gray-200">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Review Materials</h3>
-                    <p class="text-gray-600">*(Content of uploaded files would be displayed here for review, with options for highlighting and notes - actual rendering and interaction would be complex)*</p>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-md border border-gray-200">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Review Schedule</h3>
-                    <p class="text-gray-600">*(Information about upcoming reviews based on spaced repetition would be shown here - actual scheduling logic needed)*</p>
-                </div>
+
+            <div class="pt-4 border-t border-gray-200">
+              <label
+                for="hard-skill-avg"
+                class="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Average Hard Skills Score (from BYUI Self-Assessment - out of 80 in each
+                section):
+              </label>
+              <input
+                type="number"
+                id="hard-skill-avg"
+                placeholder="Enter your average hard skills score"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <a
+                href="https://careerprep.byui.edu/"
+                target="_blank"
+                class="text-blue-500 hover:text-blue-700 text-sm mt-1 inline-block"
+                >Link to Self-Assessment</a
+              >
             </div>
-        </section>
+
+            <div class="pt-4 border-t border-gray-200">
+              <label
+                for="mastering-self-management"
+                class="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Mastering Self Management Score (from BYUI Self-Assessment - out of 80 in
+                each section):
+              </label>
+              <input
+                type="number"
+                id="mastering-self-management"
+                placeholder="Enter your mastering self management score"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <a
+                href="https://careerprep.byui.edu/"
+                target="_blank"
+                class="text-blue-500 hover:text-blue-700 text-sm mt-1 inline-block"
+                >Link to Self-Assessment</a
+              >
+            </div>
+
+            <div>
+              <label
+                for="outside-commitments"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Outside Commitments (hours/week):</label
+              >
+              <input
+                type="number"
+                id="outside-commitments"
+                placeholder="e.g., 10"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            <div class="pt-4 border-t border-gray-200">
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Available Study Time (Min/Max hours per day):</label
+              >
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="flex flex-col">
+                  <label for="mon-min" class="text-sm font-medium text-gray-700 mb-1"
+                    >Monday:</label
+                  >
+                  <div class="flex gap-2">
+                    <input
+                      type="number"
+                      id="mon-min"
+                      placeholder="Min"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <input
+                      type="number"
+                      id="mon-max"
+                      placeholder="Max"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label for="tue-min" class="text-sm font-medium text-gray-700 mb-1"
+                    >Tuesday:</label
+                  >
+                  <div class="flex gap-2">
+                    <input
+                      type="number"
+                      id="tue-min"
+                      placeholder="Min"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <input
+                      type="number"
+                      id="tue-max"
+                      placeholder="Max"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label for="wed-min" class="text-sm font-medium text-gray-700 mb-1"
+                    >Wednesday:</label
+                  >
+                  <div class="flex gap-2">
+                    <input
+                      type="number"
+                      id="wed-min"
+                      placeholder="Min"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <input
+                      type="number"
+                      id="wed-max"
+                      placeholder="Max"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label for="thu-min" class="text-sm font-medium text-gray-700 mb-1"
+                    >Thursday:</label
+                  >
+                  <div class="flex gap-2">
+                    <input
+                      type="number"
+                      id="thu-min"
+                      placeholder="Min"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <input
+                      type="number"
+                      id="thu-max"
+                      placeholder="Max"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label for="fri-min" class="text-sm font-medium text-gray-700 mb-1"
+                    >Friday:</label
+                  >
+                  <div class="flex gap-2">
+                    <input
+                      type="number"
+                      id="fri-min"
+                      placeholder="Min"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <input
+                      type="number"
+                      id="fri-max"
+                      placeholder="Max"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label for="sat-min" class="text-sm font-medium text-gray-700 mb-1"
+                    >Saturday:</label
+                  >
+                  <div class="flex gap-2">
+                    <input
+                      type="number"
+                      id="sat-min"
+                      placeholder="Min"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <input
+                      type="number"
+                      id="sat-max"
+                      placeholder="Max"
+                      class="w-1/2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+            >
+              Calculate Flex Schedule
+            </button>
+          </form>
+          <div
+            id="schedule-output"
+            class="schedule-output mt-6 p-4 bg-gray-50 rounded-md border border-gray-200"
+          >
+            <h3 class="text-xl font-semibold text-green-700 mb-2">
+              Your Recommended Flex Schedule:
+            </h3>
+            <p class="text-gray-600">
+              *(Enter your details and click "Calculate Flex Schedule" to see a
+              recommendation.)*
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="weekly-review-page"
+        class="page-content bg-white p-6 rounded-lg shadow-md"
+      >
+        <h2 class="text-2xl font-semibold text-blue-700 mb-4">Weekly Review</h2>
+        <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
+          <label
+            for="file-upload"
+            class="cursor-pointer bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Upload Files
+          </label>
+          <input type="file" id="file-upload" multiple class="hidden" />
+          <p id="file-list" class="text-gray-600">
+            *(Uploaded files will be listed here - actual file handling would require
+            backend and more complex frontend)*
+          </p>
+        </div>
+        <div class="review-interface grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+          <div class="p-4 bg-gray-50 rounded-md border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">Review Materials</h3>
+            <p class="text-gray-600">
+              *(Content of uploaded files would be displayed here for review, with options
+              for highlighting and notes - actual rendering and interaction would be
+              complex)*
+            </p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-md border border-gray-200">
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">Review Schedule</h3>
+            <p class="text-gray-600">
+              *(Information about upcoming reviews based on spaced repetition would be
+              shown here - actual scheduling logic needed)*
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="mt-8 p-4 text-center bg-gray-800 text-white rounded-lg shadow-md">
-        <p class="text-sm">&copy; 2025 BYUI Web Development Society</p>
+      <p class="text-sm">&copy; 2025 BYUI Web Development Society</p>
     </footer>
 
     <script>
-        // --- Page Navigation Logic ---
-        const navButtons = document.querySelectorAll('.nav-btn');
-        const pages = document.querySelectorAll('.page-content');
+      // --- Page Navigation Logic ---
+      const navButtons = document.querySelectorAll('.nav-btn')
+      const pages = document.querySelectorAll('.page-content')
 
-        function showPage(pageId) {
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-        }
+      function showPage(pageId) {
+        pages.forEach((page) => {
+          page.classList.remove('active')
+        })
+        document.getElementById(pageId).classList.add('active')
+      }
 
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                showPage(button.dataset.page);
-            });
-        });
+      navButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          showPage(button.dataset.page)
+        })
+      })
 
-        // --- Pomodoro Timer Logic (Semi-working) ---
-        let timer;
-        let isRunning = false;
-        let totalSeconds;
-        let currentMode = 'study'; // 'study' or 'break'
-        let studyDuration = 25 * 60; // Default 25 minutes
-        let breakDuration = 5 * 60; // Default 5 minutes
+      // --- Pomodoro Timer Logic (Semi-working) ---
+      let timer
+      let isRunning = false
+      let totalSeconds
+      let currentMode = 'study' // 'study' or 'break'
+      let studyDuration = 25 * 60 // Default 25 minutes
+      let breakDuration = 5 * 60 // Default 5 minutes
 
-        const minutesDisplay = document.getElementById('minutes');
-        const secondsDisplay = document.getElementById('seconds');
-        const startPauseBtn = document.getElementById('start-pause');
-        const resetBtn = document.getElementById('reset');
-        const pomodoroBtns = document.querySelectorAll('.pomodoro-btn');
+      const minutesDisplay = document.getElementById('minutes')
+      const secondsDisplay = document.getElementById('seconds')
+      const startPauseBtn = document.getElementById('start-pause')
+      const resetBtn = document.getElementById('reset')
+      const pomodoroBtns = document.querySelectorAll('.pomodoro-btn')
 
-        // Function to update the timer display
-        function updateDisplay() {
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
-            minutesDisplay.textContent = String(minutes).padStart(2, '0');
-            secondsDisplay.textContent = String(seconds).padStart(2, '0');
-        }
+      // Function to update the timer display
+      function updateDisplay() {
+        const minutes = Math.floor(totalSeconds / 60)
+        const seconds = totalSeconds % 60
+        minutesDisplay.textContent = String(minutes).padStart(2, '0')
+        secondsDisplay.textContent = String(seconds).padStart(2, '0')
+      }
 
-        // Function to start or pause the timer
-        function startPauseTimer() {
-            if (isRunning) {
-                clearInterval(timer);
-                startPauseBtn.textContent = 'Start';
+      // Function to start or pause the timer
+      function startPauseTimer() {
+        if (isRunning) {
+          clearInterval(timer)
+          startPauseBtn.textContent = 'Start'
+        } else {
+          timer = setInterval(() => {
+            if (totalSeconds > 0) {
+              totalSeconds--
+              updateDisplay()
             } else {
-                timer = setInterval(() => {
-                    if (totalSeconds > 0) {
-                        totalSeconds--;
-                        updateDisplay();
-                    } else {
-                        // Timer finished, switch mode
-                        clearInterval(timer);
-                        if (currentMode === 'study') {
-                            currentMode = 'break';
-                            totalSeconds = breakDuration;
-                            // In a real app, you'd play a sound or show a notification here
-                            startPauseBtn.textContent = 'Start Break';
-                        } else {
-                            currentMode = 'study';
-                            totalSeconds = studyDuration;
-                            startPauseBtn.textContent = 'Start Study';
-                        }
-                        isRunning = false; // Stop running after mode switch, user has to click start again
-                        updateDisplay();
-                    }
-                }, 1000);
-                startPauseBtn.textContent = 'Pause';
+              // Timer finished, switch mode
+              clearInterval(timer)
+              if (currentMode === 'study') {
+                currentMode = 'break'
+                totalSeconds = breakDuration
+                // In a real app, you'd play a sound or show a notification here
+                startPauseBtn.textContent = 'Start Break'
+              } else {
+                currentMode = 'study'
+                totalSeconds = studyDuration
+                startPauseBtn.textContent = 'Start Study'
+              }
+              isRunning = false // Stop running after mode switch, user has to click start again
+              updateDisplay()
             }
-            isRunning = !isRunning;
+          }, 1000)
+          startPauseBtn.textContent = 'Pause'
+        }
+        isRunning = !isRunning
+      }
+
+      // Function to reset the timer
+      function resetTimer() {
+        clearInterval(timer)
+        isRunning = false
+        currentMode = 'study'
+        totalSeconds = studyDuration // Reset to the currently selected study duration
+        updateDisplay()
+        startPauseBtn.textContent = 'Start'
+      }
+
+      // Event listeners for Pomodoro cycle buttons
+      pomodoroBtns.forEach((button) => {
+        button.addEventListener('click', () => {
+          const duration = parseInt(button.dataset.minutes)
+          if (duration === 25) {
+            studyDuration = 25 * 60
+            breakDuration = 5 * 60
+          } else if (duration === 45) {
+            studyDuration = 45 * 60
+            breakDuration = 15 * 60
+          }
+          resetTimer() // Reset timer to new selected duration
+        })
+      })
+
+      // Event listeners for start/pause and reset buttons
+      startPauseBtn.addEventListener('click', startPauseTimer)
+      resetBtn.addEventListener('click', resetTimer)
+
+      // --- Flex Schedule Calculator Logic ---
+      const flexScheduleForm = document.getElementById('flex-schedule-form')
+      const scheduleOutput = document.getElementById('schedule-output')
+
+      flexScheduleForm.addEventListener('submit', (event) => {
+        event.preventDefault() // Prevent default form submission
+
+        const creditHours = parseFloat(document.getElementById('credit-hours').value)
+        const softSkillAvg = parseFloat(document.getElementById('soft-skill-avg').value)
+        const hardSkillAvg = parseFloat(document.getElementById('hard-skill-avg').value)
+        const masteringSelfManagement = parseFloat(
+          document.getElementById('mastering-self-management').value
+        )
+        const outsideCommitments = parseFloat(
+          document.getElementById('outside-commitments').value
+        )
+
+        // Collect daily min/max available hours
+        let totalMinAvailableWeekly = 0
+        let totalMaxAvailableWeekly = 0
+        // Removed 'sun' from the days of the week array
+        const daysOfWeek = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+        let allDailyInputsValid = true
+
+        daysOfWeek.forEach((day) => {
+          const minInput = document.getElementById(`${day}-min`)
+          const maxInput = document.getElementById(`${day}-max`)
+
+          const minHours = parseFloat(minInput.value)
+          const maxHours = parseFloat(maxInput.value)
+
+          if (isNaN(minHours) || isNaN(maxHours) || minHours < 0 || maxHours < minHours) {
+            allDailyInputsValid = false
+          } else {
+            totalMinAvailableWeekly += minHours
+            totalMaxAvailableWeekly += maxHours
+          }
+        })
+
+        // Basic validation
+        if (
+          isNaN(creditHours) ||
+          isNaN(softSkillAvg) ||
+          isNaN(hardSkillAvg) ||
+          isNaN(masteringSelfManagement) ||
+          isNaN(outsideCommitments) ||
+          !allDailyInputsValid
+        ) {
+          scheduleOutput.innerHTML = `<h3 class="text-xl font-semibold text-red-700 mb-2">Error:</h3><p class="text-red-600">Please fill in all fields with valid numbers. Ensure minimum hours are not greater than maximum hours for each day.</p>`
+          return
         }
 
-        // Function to reset the timer
-        function resetTimer() {
-            clearInterval(timer);
-            isRunning = false;
-            currentMode = 'study';
-            totalSeconds = studyDuration; // Reset to the currently selected study duration
-            updateDisplay();
-            startPauseBtn.textContent = 'Start';
+        // Define base study hours per credit
+        let minHoursPerCredit = 2
+        let maxHoursPerCredit = 3
+
+        // Apply Skill Impact
+        if (softSkillAvg >= 80 && hardSkillAvg >= 80) {
+          // Perfect score in both skills halves the time
+          minHoursPerCredit = 1.0
+          maxHoursPerCredit = 1.5
+        } else if (softSkillAvg < 64 || hardSkillAvg < 64) {
+          // If either skill is lacking, the best multiplier is 0.85
+          minHoursPerCredit = Math.max(minHoursPerCredit, 2 * 0.85) // Ensures it's at least 1.7
+          maxHoursPerCredit = Math.max(maxHoursPerCredit, 3 * 0.85) // Ensures it's at least 2.55
+        }
+        // For scores between 64 and 80 (not perfect, not lacking), min/maxHoursPerCredit remain 2/3 respectively
+        // or are updated by the 0.85 floor if the other skill was lacking.
+
+        // Apply Mastering Self Management Impact
+        if (masteringSelfManagement < 64) {
+          minHoursPerCredit = Math.max(minHoursPerCredit, 2 * 0.85) // Ensures it's at least 1.7
+          maxHoursPerCredit = Math.max(maxHoursPerCredit, 3 * 0.85) // Ensures it's at least 2.55
+        }
+        if (masteringSelfManagement < 40) {
+          minHoursPerCredit = Math.max(minHoursPerCredit, 2 * 0.9) // Ensures it's at least 1.8
+          maxHoursPerCredit = Math.max(maxHoursPerCredit, 3 * 0.9) // Ensures it's at least 2.7
         }
 
-        // Event listeners for Pomodoro cycle buttons
-        pomodoroBtns.forEach(button => {
-            button.addEventListener('click', () => {
-                const duration = parseInt(button.dataset.minutes);
-                if (duration === 25) {
-                    studyDuration = 25 * 60;
-                    breakDuration = 5 * 60;
-                } else if (duration === 45) {
-                    studyDuration = 45 * 60;
-                    breakDuration = 15 * 60;
-                }
-                resetTimer(); // Reset timer to new selected duration
-            });
-        });
+        // Calculate total weekly study hours needed
+        const minWeeklyStudyNeeded = creditHours * minHoursPerCredit
+        const maxWeeklyStudyNeeded = creditHours * maxHoursPerCredit
 
-        // Event listeners for start/pause and reset buttons
-        startPauseBtn.addEventListener('click', startPauseTimer);
-        resetBtn.addEventListener('click', resetTimer);
+        // Compare with available time
+        let recommendationMessage = ''
+        if (totalMaxAvailableWeekly < minWeeklyStudyNeeded) {
+          recommendationMessage = `<p class="text-red-600 font-bold">Warning: Your maximum available study time (${totalMaxAvailableWeekly.toFixed(1)} hours/week) might be insufficient for your current course load and skill levels. You may need to adjust your commitments or study habits to meet the minimum recommended study time.</p>`
+        } else if (totalMinAvailableWeekly < maxWeeklyStudyNeeded) {
+          recommendationMessage = `<p class="text-orange-600 font-bold">Note: Your minimum available study time (${totalMinAvailableWeekly.toFixed(1)} hours/week) is close to the higher end of the recommended study time. Keep an eye on your energy levels to avoid burnout.</p>`
+        } else {
+          recommendationMessage = `<p class="text-green-600 font-bold">Great! Your available study time (${totalMinAvailableWeekly.toFixed(1)} - ${totalMaxAvailableWeekly.toFixed(1)} hours/week) appears sufficient for your current course load and skill levels.</p>`
+        }
 
-        // --- Flex Schedule Calculator Logic ---
-        const flexScheduleForm = document.getElementById('flex-schedule-form');
-        const scheduleOutput = document.getElementById('schedule-output');
-
-        flexScheduleForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent default form submission
-
-            const creditHours = parseFloat(document.getElementById('credit-hours').value);
-            const softSkillAvg = parseFloat(document.getElementById('soft-skill-avg').value);
-            const hardSkillAvg = parseFloat(document.getElementById('hard-skill-avg').value);
-            const masteringSelfManagement = parseFloat(document.getElementById('mastering-self-management').value);
-            const outsideCommitments = parseFloat(document.getElementById('outside-commitments').value);
-            
-            // Collect daily min/max available hours
-            let totalMinAvailableWeekly = 0;
-            let totalMaxAvailableWeekly = 0;
-            // Removed 'sun' from the days of the week array
-            const daysOfWeek = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat']; 
-            let allDailyInputsValid = true;
-
-            daysOfWeek.forEach(day => {
-                const minInput = document.getElementById(`${day}-min`);
-                const maxInput = document.getElementById(`${day}-max`);
-
-                const minHours = parseFloat(minInput.value);
-                const maxHours = parseFloat(maxInput.value);
-
-                if (isNaN(minHours) || isNaN(maxHours) || minHours < 0 || maxHours < minHours) {
-                    allDailyInputsValid = false;
-                } else {
-                    totalMinAvailableWeekly += minHours;
-                    totalMaxAvailableWeekly += maxHours;
-                }
-            });
-
-
-            // Basic validation
-            if (isNaN(creditHours) || isNaN(softSkillAvg) || isNaN(hardSkillAvg) || isNaN(masteringSelfManagement) || isNaN(outsideCommitments) || !allDailyInputsValid) {
-                scheduleOutput.innerHTML = `<h3 class="text-xl font-semibold text-red-700 mb-2">Error:</h3><p class="text-red-600">Please fill in all fields with valid numbers. Ensure minimum hours are not greater than maximum hours for each day.</p>`;
-                return;
-            }
-
-            // Define base study hours per credit
-            let minHoursPerCredit = 2;
-            let maxHoursPerCredit = 3;
-
-            // Apply Skill Impact
-            if (softSkillAvg >= 80 && hardSkillAvg >= 80) {
-                // Perfect score in both skills halves the time
-                minHoursPerCredit = 1.0;
-                maxHoursPerCredit = 1.5;
-            } else if (softSkillAvg < 64 || hardSkillAvg < 64) {
-                // If either skill is lacking, the best multiplier is 0.85
-                minHoursPerCredit = Math.max(minHoursPerCredit, 2 * 0.85); // Ensures it's at least 1.7
-                maxHoursPerCredit = Math.max(maxHoursPerCredit, 3 * 0.85); // Ensures it's at least 2.55
-            }
-            // For scores between 64 and 80 (not perfect, not lacking), min/maxHoursPerCredit remain 2/3 respectively
-            // or are updated by the 0.85 floor if the other skill was lacking.
-
-            // Apply Mastering Self Management Impact
-            if (masteringSelfManagement < 64) {
-                minHoursPerCredit = Math.max(minHoursPerCredit, 2 * 0.85); // Ensures it's at least 1.7
-                maxHoursPerCredit = Math.max(maxHoursPerCredit, 3 * 0.85); // Ensures it's at least 2.55
-            }
-            if (masteringSelfManagement < 40) {
-                minHoursPerCredit = Math.max(minHoursPerCredit, 2 * 0.9); // Ensures it's at least 1.8
-                maxHoursPerCredit = Math.max(maxHoursPerCredit, 3 * 0.9); // Ensures it's at least 2.7
-            }
-
-            // Calculate total weekly study hours needed
-            const minWeeklyStudyNeeded = creditHours * minHoursPerCredit;
-            const maxWeeklyStudyNeeded = creditHours * maxHoursPerCredit;
-
-            // Compare with available time
-            let recommendationMessage = '';
-            if (totalMaxAvailableWeekly < minWeeklyStudyNeeded) {
-                recommendationMessage = `<p class="text-red-600 font-bold">Warning: Your maximum available study time (${totalMaxAvailableWeekly.toFixed(1)} hours/week) might be insufficient for your current course load and skill levels. You may need to adjust your commitments or study habits to meet the minimum recommended study time.</p>`;
-            } else if (totalMinAvailableWeekly < maxWeeklyStudyNeeded) {
-                 recommendationMessage = `<p class="text-orange-600 font-bold">Note: Your minimum available study time (${totalMinAvailableWeekly.toFixed(1)} hours/week) is close to the higher end of the recommended study time. Keep an eye on your energy levels to avoid burnout.</p>`;
-            } else {
-                recommendationMessage = `<p class="text-green-600 font-bold">Great! Your available study time (${totalMinAvailableWeekly.toFixed(1)} - ${totalMaxAvailableWeekly.toFixed(1)} hours/week) appears sufficient for your current course load and skill levels.</p>`;
-            }
-
-            scheduleOutput.innerHTML = `
+        scheduleOutput.innerHTML = `
                 <h3 class="text-xl font-semibold text-green-700 mb-2">Your Recommended Flex Schedule:</h3>
                 <p class="text-gray-800 mb-2">Based on your input, you should aim to spend approximately <strong>${minWeeklyStudyNeeded.toFixed(1)} to ${maxWeeklyStudyNeeded.toFixed(1)} hours per week</strong> studying outside of class.</p>
                 <p class="text-gray-700 text-sm">This range accounts for your credit hours, skill levels, and helps you balance productivity with preventing burnout.</p>
                 ${recommendationMessage}
                 <p class="text-gray-500 text-xs mt-4">*(This is a simplified calculation for demonstration. A full implementation would involve more complex algorithms and daily time allocation.)*</p>
-            `;
-        });
+            `
+      })
 
+      // --- Weekly Review File Upload Placeholder ---
+      const fileUploadInput = document.getElementById('file-upload')
+      const fileListDisplay = document.getElementById('file-list')
 
-        // --- Weekly Review File Upload Placeholder ---
-        const fileUploadInput = document.getElementById('file-upload');
-        const fileListDisplay = document.getElementById('file-list');
+      fileUploadInput.addEventListener('change', (event) => {
+        const files = event.target.files
+        if (files.length > 0) {
+          let fileNames = Array.from(files)
+            .map((file) => file.name)
+            .join(', ')
+          fileListDisplay.textContent = `Selected files: ${fileNames}`
+        } else {
+          fileListDisplay.textContent = `*(Uploaded files will be listed here - actual file handling would require backend and more complex frontend)*`
+        }
+      })
 
-        fileUploadInput.addEventListener('change', (event) => {
-            const files = event.target.files;
-            if (files.length > 0) {
-                let fileNames = Array.from(files).map(file => file.name).join(', ');
-                fileListDisplay.textContent = `Selected files: ${fileNames}`;
-            } else {
-                fileListDisplay.textContent = `*(Uploaded files will be listed here - actual file handling would require backend and more complex frontend)*`;
-            }
-        });
-
-        // Show the home page on initial load
-        document.addEventListener('DOMContentLoaded', () => {
-            showPage('home-page');
-            resetTimer(); // Ensure Pomodoro timer is initialized correctly on load
-        });
+      // Show the home page on initial load
+      document.addEventListener('DOMContentLoaded', () => {
+        showPage('home-page')
+        resetTimer() // Ensure Pomodoro timer is initialized correctly on load
+      })
     </script>
-</body>
+  </body>
 </html>
