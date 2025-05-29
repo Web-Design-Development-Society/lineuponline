@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Timer from './components/Timer'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 type Period = 'Focus' | 'Long Break' | 'Short Break'
 
@@ -19,6 +20,7 @@ function App() {
       <h1>Pomodoro</h1>
       <p>Cycles Completed: {cyclesCompleted}</p>
       <Timer></Timer>
+      <Footer />
     </>
   )
 }
