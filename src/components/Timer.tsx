@@ -6,12 +6,22 @@ export default function Timer() {
     <>
       <CountdownCircleTimer
         isPlaying
-        duration={7}
+        duration={15 * 60}
         colors={['#004777', '#F7B801', '#A30000', '#A30000']}
         colorsTime={[7, 5, 2, 0]}
       >
-        {({ remainingTime }) => remainingTime}
+        {(renderProps) => <FormatDisplay {...renderProps} />}
       </CountdownCircleTimer>
     </>
+  )
+}
+
+const FormatDisplay = ({ remainingTime }: { remainingTime: number }) => {
+  const minutes = Math.floor(remainingTime / 60)
+  const seconds = remainingTime % 60
+  return (
+    <p>
+      {minutes}:{seconds.toString().padStart(2, '0')}
+    </p>
   )
 }
