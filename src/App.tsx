@@ -1,24 +1,22 @@
-import { useEffect, useState } from 'react'
-import Timer from './components/Timer'
+import React, { Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
+import Nav from './components/Nav'
 
-type Period = 'Focus' | 'Long Break' | 'Short Break'
+const Pomodoro = React.lazy(() => import('./components/Pomodoro'))
 
 function App() {
-  const [cyclesCompleted, setCyclesCompleted] = useState<number>(0)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [currentPeriod, setCurrentPeriod] = useState<Period>('Focus')
-
-  useEffect(() => {
-    setCyclesCompleted(1)
-  }, [])
-
   return (
     <>
       <Header />
-      <h1>Pomodoro</h1>
-      <p>Cycles Completed: {cyclesCompleted}</p>
-      <Timer></Timer>
+      <Nav />
+      <Suspense fallback={<p>LOADING</p>}>
+        <Routes>
+          <Route path="/" element={<p>HOMIE</p>} /> {/* Home Page */}
+          <Route path="/pomodoro" element={<Pomodoro />} />
+        </Routes>
+      </Suspense>
+      {/* TODO: Add footer */}
     </>
   )
 }

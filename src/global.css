@@ -79,6 +79,36 @@ header {
   text-align: center;
 }
 
+.main-nav {
+  margin-bottom: 2rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-nav a {
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* full rounded */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.main-nav a:hover {
+  background-color: #2563eb; /* Tailwind's blue-600 */
+  transform: scale(1.05);
+}
+
 h1 {
   font-size: 1.875rem; /* text-3xl */
   font-weight: bold;
