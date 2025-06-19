@@ -12,6 +12,10 @@ export default function Timer() {
       >
         {(renderProps) => <FormatDisplay {...renderProps} />}
       </CountdownCircleTimer>
+      <div>
+        <button>Start</button>
+        <button>Stop</button>
+      </div>
     </>
   )
 }

@@ -13,8 +13,10 @@ export default function Pomodoro() {
   return (
     <>
       <h1>Pomodoro</h1>
-      <p>Cycles Completed: {cyclesCompleted}</p>
-      <Timer />
+      <section id="timer-section">
+        <p>Cycles Completed: {cyclesCompleted}</p>
+        <Timer />
+      </section>
     </>
   )
 }
