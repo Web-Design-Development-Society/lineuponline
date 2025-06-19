@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Nav from './components/Nav'
+import Footer from './components/Footer'
 
 const Pomodoro = React.lazy(() => import('./components/Pomodoro'))
 
@@ -16,7 +17,7 @@ function App() {
           <Route path="/pomodoro" element={<Pomodoro />} />
         </Routes>
       </Suspense>
-      {/* TODO: Add footer */}
+      <Footer />
     </>
   )
 }
