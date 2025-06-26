@@ -14,6 +14,8 @@ export default function Timer() {
 
   return (
     <>
+      <button className="time-btn">25</button>
+      <button className="time-btn">45</button>
       <CountdownCircleTimer
         isPlaying={playing}
         duration={15 * 60}

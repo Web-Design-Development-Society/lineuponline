@@ -129,6 +129,11 @@ p {
 
 /* --------------------------------  Pomodoro -------------------------------- */
 
+.time-btn {
+  background-color: #84b1fa;
+  padding: 10px;
+}
+
 #timer-section {
   display: flex;
   justify-content: center;
