@@ -3,6 +3,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 export default function Timer() {
   const [playing, setPlaying] = useState(false)
+  const [timerLength, setTimerLength] = useState(25)
 
   const handleStart = () => {
     setPlaying(true)
@@ -12,13 +13,25 @@ export default function Timer() {
     setPlaying(false)
   }
 
+  const setCycle25 = () => {
+    setTimerLength(25)
+  }
+
+  const setCycle45 = () => {
+    setTimerLength(45)
+  }
+
   return (
     <>
-      <button className="time-btn">25</button>
-      <button className="time-btn">45</button>
+      <button onClick={setCycle25} className="time-btn">
+        25
+      </button>
+      <button onClick={setCycle45} className="time-btn">
+        45
+      </button>
       <CountdownCircleTimer
         isPlaying={playing}
-        duration={15 * 60}
+        duration={timerLength * 60}
         colors={['#004777', '#F7B801', '#A30000', '#A30000']}
         colorsTime={[7, 5, 2, 0]}
       >

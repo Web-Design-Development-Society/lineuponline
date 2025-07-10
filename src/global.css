@@ -131,7 +131,8 @@ p {
 
 .time-btn {
   background-color: #84b1fa;
-  padding: 10px;
+  padding: 5px 20px;
+  margin: 10px;
 }
 
 #timer-section {
